@@ -3,10 +3,10 @@ import "moment/locale/vi";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import SiteHeader from "~/app/components/header/site-header";
-// import { NavigationEvents } from "~/components/navigation-event";
+import { NavigationEvents } from "~/components/navigation-event";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { siteConfig } from "~/config/site";
-// import { AuthContextProvider } from "~/contexts/auth-context";
+import { AuthContextProvider } from "~/contexts/auth-context";
 import { fontDancingScript, fontSans } from "~/lib/fonts";
 import { cn } from "~/lib/utils";
 import { ChildReact } from "~/types/type";
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: ChildReact) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {/* <AuthContextProvider> */}
+          <AuthContextProvider>
             <div className="flex relative">
               <NavSide />
               <ScrollArea className="flex-1 relative h-screen flex flex-col">
@@ -53,12 +53,12 @@ export default function RootLayout({ children }: ChildReact) {
                 <div className="flex-1">{children}</div>
               </ScrollArea>
             </div>
-          {/* </AuthContextProvider> */}
+          </AuthContextProvider>
           {children}
         </ThemeProvider>
-        {/* <Suspense fallback={null}>
+        <Suspense fallback={null}>
           <NavigationEvents />
-        </Suspense> */}
+        </Suspense>
       </body>
     </html>
   );
